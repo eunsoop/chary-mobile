@@ -4,6 +4,7 @@ class ThemeData {
   final Color background;
 
   final Color primaryContainer;
+  final Color primaryContainerBorder;
   final Color secondaryContainer;
 
   final TextStyle title;
@@ -15,6 +16,7 @@ class ThemeData {
     required this.background,
 
     required this.primaryContainer,
+    required this.primaryContainerBorder,
     required this.secondaryContainer,
 
     required this.title,
@@ -26,7 +28,8 @@ class ThemeData {
   factory ThemeData.light() => const ThemeData(
       background: Color(0xFFF0F0F0),
 
-      primaryContainer: Color(0x99FFFFFF),
+      primaryContainer: Color(0xFFF9F9F9),
+      primaryContainerBorder: Color(0xFFFFFFFF),
       secondaryContainer: Color(0x33FFFFFF),
 
       title: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: Color(0xFF000000)),

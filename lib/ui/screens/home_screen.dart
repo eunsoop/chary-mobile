@@ -1,8 +1,10 @@
+import 'package:chary/ui/components/containers.dart';
 import 'package:chary/ui/components/headers.dart';
 import 'package:chary/ui/components/interactables.dart';
-import 'package:flutter/material.dart' hide Text;
+import 'package:chary/ui/components/theme.dart';
+import 'package:flutter/material.dart' hide Text, Theme;
 import 'package:flutter/widgets.dart';
-import 'package:iconoir_flutter/iconoir_flutter.dart' hide Text;
+import 'package:iconoir_flutter/iconoir_flutter.dart' hide Text, List;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -55,6 +57,12 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {}
             )
           ],
+        ),
+        ContentListView<int>(
+          contentLoader: () {
+            return List.generate(5, (i) => i*5);
+          },
+          itemBuilder: (context, index) => Text(index.toString(), style: Theme.of(context).body),
         )
       ],
     );
