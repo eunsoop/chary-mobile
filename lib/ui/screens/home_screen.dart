@@ -1,9 +1,8 @@
 import 'package:chary/ui/components/headers.dart';
 import 'package:chary/ui/components/interactables.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Text;
 import 'package:flutter/widgets.dart';
-import 'package:iconoir_flutter/regular/multi_bubble.dart';
-import 'package:iconoir_flutter/solid/multi_bubble.dart';
+import 'package:iconoir_flutter/iconoir_flutter.dart' hide Text;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,17 +32,26 @@ class _HomeScreenState extends State<HomeScreen> {
               Text("Chary Inc", style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w600))
             ]
           ), 
-          toggleButtons: [
-            ToggleButton(
+          headerButtons: [
+            HeaderButton(
+              active: true,
               title: "Threads",
               description: "1 unread",
-              iconBuilder: (context, isEnabled) => isEnabled ? MultiBubbleSolid() : MultiBubble(),
+              icon: MultiBubbleSolid(),
               onPressed: () {}
             ),
-            ToggleButton(
-              title: "Threads",
-              description: "1 unread",
-              iconBuilder: (context, isEnabled) => isEnabled ? MultiBubbleSolid() : MultiBubble(),
+            HeaderButton(
+              active: false,
+              title: "Saved",
+              description: "0 saved",
+              icon: Bookmark(),
+              onPressed: () {}
+            ),
+            HeaderButton(
+              active: false,
+              title: "Scheduled",
+              description: "0 scheduled",
+              icon: Alarm(),
               onPressed: () {}
             )
           ],

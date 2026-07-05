@@ -30,9 +30,9 @@ class ThemeData {
       secondaryContainer: Color(0x33FFFFFF),
 
       title: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: Color(0xFF000000)),
-      sectionTitle: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Color(0xFF333333)),
-      body: TextStyle(fontSize: 16, color: Color(0xFF333333)),
-      descriptive: TextStyle(fontSize: 14, color: Color(0xFF777777)),
+      sectionTitle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Color(0xFF333333)),
+      body: TextStyle(fontSize: 14, color: Color(0xFF333333)),
+      descriptive: TextStyle(fontSize: 12, color: Color(0xFF777777)),
     );
 }
 

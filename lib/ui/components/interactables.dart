@@ -1,67 +1,56 @@
 import 'package:chary/ui/components/theme.dart';
 import 'package:flutter/widgets.dart';
 
-typedef IconBuilder = Widget Function(BuildContext context, bool toggle);
+class HeaderButton extends StatelessWidget {
 
-class ToggleButton extends StatefulWidget {
-  final bool initalState;
+  final bool active;
 
   final String title;
   final String description;
 
-  final IconBuilder iconBuilder;
+  final Widget icon;
   final VoidCallback onPressed;
 
-  const ToggleButton({super.key, this.initalState = false, required this.title, required this.description, required this.iconBuilder, required this.onPressed});
+  const HeaderButton({super.key, required this.active, required this.title, required this.description, required this.icon, required this.onPressed});
 
-  @override
-  State<StatefulWidget> createState() => _ToggleButton();
-
-}
-
-class _ToggleButton extends State<ToggleButton> {
-
-  late bool current = widget.initalState;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
-        onTap: () {
-          setState(() {
-            current = !current;
-          });
-          widget.onPressed();
-        },
-        child: ClipRRect(
-          borderRadius: BorderRadiusGeometry.circular(16),
-          child: Container(
-            color: current ? Theme.of(context).primaryContainer : Theme.of(context).secondaryContainer,
-            padding: EdgeInsetsGeometry.symmetric(
-              vertical: 15,
-              horizontal: 15
+        onTap: onPressed,
+        child: Container(
+          padding: const EdgeInsetsGeometry.symmetric(
+            vertical: 15,
+            horizontal: 15
+          ),
+          decoration: BoxDecoration(
+            color: active ? Theme.of(context).primaryContainer : Theme.of(context).secondaryContainer,
+            border: BoxBorder.all(
+              color: Color.fromARGB(active ? 255 : 102, 255, 255, 255)
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width: 30,
-                  height: 30,
-                  child: widget.iconBuilder(context, current),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  widget.title,
-                  style: Theme.of(context).title,
-                ),
-                Text(
-                  widget.description,
-                  style: Theme.of(context).descriptive,
-                )
-              ],
-            ),
+            borderRadius: BorderRadius.circular(16)
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                width: 30,
+                height: 30,
+                child: icon,
+              ),
+              SizedBox(height: 10),
+              Text(
+                title,
+                style: Theme.of(context).sectionTitle,
+              ),
+              Text(
+                description,
+                style: Theme.of(context).descriptive,
+              )
+            ],
           ),
         ),
       )

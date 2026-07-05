@@ -4,8 +4,8 @@ import 'package:flutter/widgets.dart';
 
 class DefaultHeader extends StatelessWidget {
   final Widget title;
-  final List<ToggleButton> toggleButtons;
-  const DefaultHeader({super.key, required this.title, required this.toggleButtons});
+  final List<HeaderButton> headerButtons;
+  const DefaultHeader({super.key, required this.title, required this.headerButtons});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class DefaultHeader extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             spacing: 10,
-            children: toggleButtons,
+            children: headerButtons,
           )
         ],
       ),
